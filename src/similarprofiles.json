@@ -1,0 +1,35 @@
+[
+    {
+      "_id": "5f89d0e8e7243e24ce7c5a88",
+      "index": 0,
+      "picture": "http://placehold.it/32x32",
+      "name": "Maya Holder",
+      "priceRange": "$$",
+      "places": ["Chipotle", "Amelia's"],
+      "foods": ["Cuban", "Indian"],
+      "diet": "vegan",
+      "city": "Gainesville"
+    },
+    {
+      "_id": "5f89d0e85653ebe5c4ed795a",
+      "index": 1,
+      "picture": "http://placehold.it/32x32",
+      "name": "Corina Meyers",
+      "priceRange": "$$$",
+      "places": ["BurgerFi", "Grub"],
+      "foods": ["American", "Indian"],
+      "diet": "vegan",
+      "city": "Gainesville"
+    },
+    {
+      "_id": "5f89d0e868d708af2c9b4b06",
+      "index": 2,
+      "picture": "http://placehold.it/32x32",
+      "name": "Bessie Sanders",
+      "priceRange": "$$$",
+      "places": ["BurgerFi", "Grub"],
+      "foods": ["Ethiopian", "American"],
+      "diet": "vegan",
+      "city": "Gainesville"
+    }
+]

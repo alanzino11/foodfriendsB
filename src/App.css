@@ -1,0 +1,34 @@
+.App {
+  text-align: center;
+  background-color: whitesmoke;
+  min-height:100vh;
+}
+
+.dietbutton {
+  padding: 10px;
+}
+
+.filter-icon {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.similar-profiles {
+  background-color: white;
+  margin-top: 5px;
+  border-radius: 10px;
+  height: 250px;
+}
+
+.slider {
+  overflow-y: hidden;
+  max-height: 250px;
+
+  transition-property: all;
+  transition-duration: .5s;
+  transition-property: cubic-bezier(0, 1, .5, 1);
+}
+
+.slider.closed {
+  max-height: 0;
+}
