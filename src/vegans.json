@@ -8,14 +8,14 @@
       "places": ["Chipotle", "Amelia's"],
       "foods": ["Cuban", "Indian"],
       "diet": "vegan",
-      "city": "Tampa"
+      "city": "Gainesville"
     },
     {
       "_id": "5f89d0e85653ebe5c4ed795a",
-      "index": 3,
+      "index": 1,
       "picture": "http://placehold.it/32x32",
       "name": "Corina Meyers",
-      "priceRange": "$$$",
+      "priceRange": "$$",
       "places": ["BurgerFi", "Grub"],
       "foods": ["American", "Indian"],
       "diet": "vegan",
@@ -23,10 +23,10 @@
     },
     {
       "_id": "5f89d0e868d708af2c9b4b06",
-      "index": 6,
+      "index": 2,
       "picture": "http://placehold.it/32x32",
       "name": "Bessie Sanders",
-      "priceRange": "$$$",
+      "priceRange": "$$",
       "places": ["BurgerFi", "Grub"],
       "foods": ["Ethiopian", "American"],
       "diet": "vegan",
@@ -34,29 +34,29 @@
     },
     {
       "_id": "5f89d0e8930c7459a96b937f",
-      "index": 7,
+      "index": 3,
       "picture": "http://placehold.it/32x32",
       "name": "Shelia Roth",
-      "priceRange": "$$$",
+      "priceRange": "$$",
       "places": ["Karma Cream", "TeaStori"],
       "foods": ["Cuban", "Indian"],
       "diet": "vegan",
-      "city": "Orlando"
+      "city": "Gainesville"
     },
     {
       "_id": "5f89d0e82db98e7558daa781",
-      "index": 9,
+      "index": 4,
       "picture": "http://placehold.it/32x32",
       "name": "Nadine Moody",
-      "priceRange": "$$$",
+      "priceRange": "$$",
       "places": ["Karma Cream", "TeaStori"],
       "foods": ["Korean", "BBQ"],
       "diet": "vegan",
-      "city": "Tampa"
+      "city": "Gainesville"
     },
     {
       "_id": "5f89d0e8b072bcf88c749cfc",
-      "index": 11,
+      "index": 5,
       "picture": "http://placehold.it/32x32",
       "name": "Berta Mendez",
       "priceRange": "$",
@@ -67,7 +67,7 @@
     },
     {
       "_id": "5f89d0e870e8d6a313ed9401",
-      "index": 12,
+      "index": 6,
       "picture": "http://placehold.it/32x32",
       "name": "Talley Newton",
       "priceRange": "$$$",
@@ -78,7 +78,7 @@
     },
     {
       "_id": "5f89d0e8dee27aad47a3a6c4",
-      "index": 14,
+      "index": 7,
       "picture": "http://placehold.it/32x32",
       "name": "Lavonne Haynes",
       "priceRange": "$$",
@@ -89,7 +89,7 @@
     },
     {
       "_id": "5f89d0e88cfc4c7c459779b9",
-      "index": 15,
+      "index": 8,
       "picture": "http://placehold.it/32x32",
       "name": "Abby Woodard",
       "priceRange": "$",

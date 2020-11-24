@@ -21,16 +21,13 @@ import './Profile.css';
 import image from '../../images/image.png';
 import Pill from '../Pill'
 
-const Profile = ({profile, setDropdownIndex}) => {
+const Profile = ({profile, setDropdownIndex, isEditing}) => {
     const [isFollowing, setFollowing] = useState("Follow");
-    const [icon, setIcon] = useState("triangle-down");
     const [showSimilarProfiles, setShowSimilarProfiles] = useState(false);
-    const [isEditing, setEditing] = useState(false);
     const [diet, setDiet] = useState(profile.diet);
     const [popoverOpen, setPopoverOpen] = useState(false)
 
     const dropdown = () => {
-        icon === "triangle-down" ? setIcon("triangle-up") : setIcon("triangle-down");
         setShowSimilarProfiles(!showSimilarProfiles);
         showSimilarProfiles ? setDropdownIndex(-1) : setDropdownIndex(profile.index);
     }
@@ -44,12 +41,6 @@ const Profile = ({profile, setDropdownIndex}) => {
         <div className="profile">
             <div className="content">
                 <div className="edit">
-                    <Button 
-                        onClick={() => setEditing(!isEditing)}
-                        variantColor={isEditing ? "red": "gray"}
-                    >
-                        {isEditing ? "Save Edit" : "Edit"}
-                    </Button>
                 </div>
                 <div className="image">
                     <img src={image} alt=""/>
@@ -78,19 +69,6 @@ const Profile = ({profile, setDropdownIndex}) => {
                             </PopoverContent>
                         </Popover> ) : null
                     }
-
-                    {/* <Menu>
-                        <MenuButton as={Button} rightIcon="chevron-down" border="1px solid grey">
-                        Diet
-                        </MenuButton>
-                        <MenuList minWidth="240px">
-                        <MenuOptionGroup title="Diet" type="checkbox">
-                            <MenuItemOption value="vegan">Vegan</MenuItemOption>
-                            <MenuItemOption value="keto">Keto</MenuItemOption>
-                            <MenuItemOption value="gluten-free">Gluten-Free</MenuItemOption>
-                        </MenuOptionGroup>
-                        </MenuList>
-                    </Menu> */}
                 </div>
                 <div className="info">
                     <b>{profile.city}, FL</b> &nbsp; | &nbsp; <b>{profile.priceRange}</b>
@@ -103,14 +81,7 @@ const Profile = ({profile, setDropdownIndex}) => {
                 </div>
                 <div className="buttons">
                     <div className="image"><button className="followbutton" onClick={() => setFollowing("Following")}>{isFollowing}</button></div>
-                    <IconButton 
-                      variantColor="teal"
-                      aria-label="Call Segun"
-                      size="lg"
-                      icon={icon}
-                      height={10}
-                      onClick={dropdown}
-                    />
+                    <Button variantColor="teal" onClick={dropdown}>Similar Profiles</Button>
                 </div>
             </div>
         </div>

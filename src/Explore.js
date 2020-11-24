@@ -2,17 +2,20 @@ import React, { useState } from 'react';
 import { 
   Heading,
   Stack,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuOptionGroup,
-  MenuItemOption,
   Button,
   Checkbox, 
   Flex,
   Spinner,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+  Select,
 } from "@chakra-ui/core";
-import { FaFilter } from 'react-icons/fa';
 
 import jsonprofiles from './profiles.json';
 import veganprofiles from './vegans.json';
@@ -22,13 +25,17 @@ import Profile from './components/profile/Profile';
 import SimilarProfile from './components/profile/SimilarProfile.js';
 
 const Explore = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure()
   const [profiles, setProfiles] = useState(jsonprofiles)
   const [isLoading, setLoading] = useState(false);
   const [clickedIndex, setClickedIndex] = useState(-1);
+  const [modalOpen, isModalOpen] = useState(true);
+  const [isEditing, setEditing] = useState(false);
 
   console.log(profiles)
 
   const filter = () => {
+    isModalOpen(false);
     setLoading(true);
     setTimeout(() => setLoading(false), 500)
     setProfiles(veganprofiles)
@@ -40,46 +47,24 @@ const Explore = () => {
 
   return (
       <div className="explorepage">
+        <Flex align="center">
+          <Button
+            variantColor="blue"
+            onClick={() => isModalOpen(true)}
+          >
+            Edit My Preferences
+          </Button>
+          <Button
+            onClick={() => setEditing(!isEditing)}
+            variantColor={isEditing ? "red": "blue"}
+          >
+            {isEditing ? "Save Edit" : "Edit Profiles"}
+          </Button>
+        </Flex>
         <Stack spacing={3}>
             <Heading as="h1" size="2xl">Food Friends</Heading>
             <Heading as="h2" size="xl">Explore</Heading>
         </Stack>
-        <Flex align="center">
-          <div className="filter-icon">
-            <FaFilter size={20}/>
-          </div>
-          <div className="dietbutton">
-          <Menu closeOnSelect={false}>
-            <MenuButton as={Button} rightIcon="chevron-down" border="1px solid grey">
-              Diet
-            </MenuButton>
-            <MenuList minWidth="240px">
-              <MenuOptionGroup title="Diet" type="checkbox">
-                <MenuItemOption value="vegan">Vegan</MenuItemOption>
-                <MenuItemOption value="keto">Keto</MenuItemOption>
-                <MenuItemOption value="gluten-free">Gluten-Free</MenuItemOption>
-              </MenuOptionGroup>
-              <Button variantColor="blue" onClick={filter}>Apply</Button>
-            </MenuList>
-          </Menu>
-          </div>
-          <Menu closeOnSelect={false}>
-            <MenuButton as={Button} rightIcon="chevron-down" border="1px solid grey">
-              Price
-            </MenuButton>
-            <MenuList minWidth="240px">
-              <MenuOptionGroup title="Price" type="checkbox">
-                <MenuItemOption value="$">$</MenuItemOption>
-                <MenuItemOption value="$$">$$</MenuItemOption>
-                <MenuItemOption value="$$$">$$$</MenuItemOption>
-              </MenuOptionGroup>
-              <Button variantColor="blue">Apply</Button>
-            </MenuList>
-          </Menu>
-          <Checkbox variantColor="blue" defaultIsChecked paddingLeft={5}>
-            Only My City
-          </Checkbox>
-        </Flex>
         {
           isLoading ? 
             <Spinner
@@ -93,12 +78,12 @@ const Explore = () => {
               {profiles.map((p, index) => {
                 return (
                   <div style={{ paddingBottom: "10px" }}>
-                    <Profile profile={p} setDropdownIndex={setDropdownIndex}/>
+                    <Profile profile={p} setDropdownIndex={setDropdownIndex} isEditing={isEditing}/>
                     {index === clickedIndex ? (
                       <div className="similar-profiles">
-                        {similarprofiles.map(p => {
+                        {similarprofiles.map(sp => {
                           return (
-                          <SimilarProfile profile={p}/>
+                          <SimilarProfile profile={sp}/>
                         )})}
                       </div> 
                       ) : null}
@@ -107,6 +92,33 @@ const Explore = () => {
             </Flex>
           )
         }
+        <Modal isOpen={modalOpen} onClose={() => isModalOpen(false)}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>My Preferences</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              <Select placeholder="Select diet">
+                <option value="option1">Keto</option>
+                <option value="option2">Vegan</option>
+                <option value="option3">Vegetarian</option>
+              </Select>
+              <Checkbox variantColor="blue" defaultIsChecked padding={10}>
+                Only My City
+              </Checkbox>
+              <Select placeholder="Select price">
+                <option value="option1">$</option>
+                <option value="option2">$$</option>
+                <option value="option3">$$$</option>
+              </Select>
+            </ModalBody>
+            <ModalFooter>
+              <Button colorScheme="blue" mr={3} onClick={filter}>
+                Submit
+              </Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
       </div>
     )
 }
